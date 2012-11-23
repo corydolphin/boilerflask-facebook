@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-from boilerflask.models import User
-from boilerflask.forms import (LoginForm)
+#from boilerflask.models import User
+#from boilerflask.forms import (LoginForm)
 from boilerflask import app #, loginManager, crypt, db, cache
 import utils
 

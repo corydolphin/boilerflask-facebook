@@ -8,11 +8,10 @@ from boilerflask.models import User
 from flask import flash
 from flask.ext.wtf import (Form, TextField, Required, PasswordField, validators, FileField,
                                                     file_allowed, file_required)
-from flask.ext.login import current_user
-from flask.ext.uploads import UploadSet, IMAGES, configure_uploads
-from sqlalchemy.exc import IntegrityError
+#from flask.ext.login import current_user
 
 
+'''
 class LoginForm(Form):
     login_username = TextField(validators=[Required()])
     login_password = TextField(validators=[Required()])
@@ -70,5 +69,5 @@ class RegistrationForm(Form):
             db.session.add(self.user)
             db.session.commit()
         return self.rv
-
+'''
 

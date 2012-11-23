@@ -7,7 +7,6 @@ from boilerflask import db, app #, cache, crypt # use a cache and a crypto libra
 import datetime
 import utils
 import re
-import facebook
 
 class User(db.Model):
     '''
