@@ -4,7 +4,7 @@
 #
 
 from flask import Flask, render_template, request, redirect, url_for, abort
-from flask.ext.sqlalchemy import SQLAlchemy
+#from flask.ext.sqlalchemy import SQLAlchemy #want to handle a database connection?
 #from flask.ext.login import (LoginManager,AnonymousUser) # want to handle login?
 #from flask.ext.bcrypt import Bcrypt #want to hash passwords? (You should!)
 #from flaskext.cache import Cache # want a cache?
@@ -16,7 +16,7 @@ __cfg = config.getConfig()
 app.config.from_object(__cfg) 
 app.configType = __cfg
 
-db = SQLAlchemy(app) #database and ORM
+#db = SQLAlchemy(app) #database and ORM
 #loginManager = LoginManager() #handle login and sessions
 #crypt = Bcrypt(app) #bcrypt for password hashing
 #cache = Cache(app)

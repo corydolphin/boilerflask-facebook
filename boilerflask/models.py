@@ -3,11 +3,12 @@
 # @wcdolphin
 #
 
-from boilerflask import db, app #, cache, crypt # use a cache and a crypto library for users!
+from boilerflask import app #db, cache, crypt # use a cache and a crypto library for users!
 import datetime
 import utils
 import re
 
+""" Uncomment for user model
 class User(db.Model):
     '''
     This object represents a registered user
@@ -23,3 +24,4 @@ class User(db.Model):
 
     def __repr__(self):
         return '{User %r}' % self.username
+"""
