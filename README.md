@@ -41,3 +41,7 @@ Now, you can run the application locally.
 You can also run it using the production server if you install `libevent-dev` and `foreman`, but I am leaving that for another day, it also is difficult in Windows
 
     $ foreman start
+
+
+heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi.git
+heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
