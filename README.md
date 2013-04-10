@@ -20,19 +20,18 @@ Optionally, install `foreman` and `heroku` Ruby Gems
 
 
 
-Now, you can setup an isolated environment with `virtualenv`.
+Optionally, you can setup an isolated environment with `virtualenv`.
 
     $ virtualenv --no-site-packages env
     $ source env/bin/activate
 
-On ubuntu, install the necessary packages:
-	$sudo apt-get install python-dev 
+On ubuntu, you may need to install python-dev:
+    $sudo apt-get install python-dev 
+
 
 Next, install the requirements in your isolated python environment.
 
     $ pip install -r requirements.txt
-
-
 
 Now, you can run the application locally.
 
@@ -41,7 +40,3 @@ Now, you can run the application locally.
 You can also run it using the production server if you install `libevent-dev` and `foreman`, but I am leaving that for another day, it also is difficult in Windows
 
     $ foreman start
-
-
-heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi.git
-heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git

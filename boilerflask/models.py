@@ -8,7 +8,7 @@ import datetime
 import utils
 import re
 
-""" Uncomment for user model
+""" Uncomment for user model with sqlalchemy
 class User(db.Model):
     '''
     This object represents a registered user
@@ -24,4 +24,18 @@ class User(db.Model):
 
     def __repr__(self):
         return '{User %r}' % self.username
+"""
+
+""" Uncomment for user model
+class User(db.Document):
+    email = db.StringField(required=False)
+    username = db.StringField(required=True)
+    def __str__(self):
+        return self.__unicode__()
+
+    def __repr__(self):
+        return self.__unicode__()
+
+    def __unicode(self):
+        return u'user:{"username":%s, "email":%s}' % (self.username, self.email)
 """

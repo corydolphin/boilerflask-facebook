@@ -9,7 +9,7 @@ class Config(object):
     Basic default global configuration variables not specific to any environment
     """
     SQLALCHEMY_ECHO = False
-    SOMECOOLCONSTANT = 3
+    SOMECOOLCONSTANT = 3 # an example variable you use throughout your application
     SECRET_KEY = 'verysecret'
     DEBUG = True
 
@@ -21,17 +21,18 @@ class DevelopmentConfig(Config):
     configuration to run the application
     """ 
     SQLALCHEMY_DATABASE_URI = 'something local maybe?'
-    FACEBOOK_APP_SECRET = "551e9288f0d937750251bbf98c1ab970"
-    FACEBOOK_APP_ID = "440114152673475"
-    CACHE_TYPE = 'simple'
+    # FACEBOOK_APP_SECRET = "XXX" Example variables which change with environment
+    # FACEBOOK_APP_ID = "XX"
+
 
 class ProductionConfig(DevelopmentConfig):
     '''
     Extends and overrides declarations from the DevelopmentConfiguration
     '''
-    FACEBOOK_APP_SECRET = "f2db0a7be3df73e89c069e98c9ab8ca9"
-    FACEBOOK_APP_ID = "184933461628892"
-    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_ROSE_URL")
+    DEBUG = False
+    # FACEBOOK_APP_SECRET = "XXX" Example variables which change with environment
+    # FACEBOOK_APP_ID = "XX"
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_ROSE_URL")
 
 
 def getConfig():
