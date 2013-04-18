@@ -10,13 +10,10 @@
 <p>
     This is a very simple, boilerplated Flask application, configured with some basic structure to make life easy.
 </p>
-
-
     <div class="fb-login-button" autologoutlink="true" scope="manage_notifications"></div>
     <h2> Welcome {{facebook_profile['name'] }} </h2>
 
 <ul>
-
 {%if notifications %}
     {%for notification in notifications['data']%}
         <li> {{notification['title']}} </li>

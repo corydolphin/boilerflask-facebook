@@ -7,16 +7,42 @@ import facebook
 
 @app.route('/', methods=['GET'] )
 def index():
-    user = facebook.get_user_from_cookie(request.cookies, app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET'])
+    user = getFacebookUser()
     facebook_profile = None
     notifications = None
     if user:
+
         graph = facebook.GraphAPI(user["access_token"])
         facebook_profile = graph.get_object("me")
-        print facebook_profile
         notifications = graph.get_object("me/notifications")
 
+    print "User:%s" % user
+    print "Profile:%s" % facebook_profile
+    print "Notifications:%s" % notifications
+
     return render_template('index.html', facebook_profile=facebook_profile, notifications=notifications)
+
+@app.route('/notifier', methods=['GET'] )
+def notifier():
+    user = getFacebookUser()
+    facebook_profile = None
+    notifications = None
+    # check notifications
+    # decide to send notifications
+    # blahahaha
+    if user:
+        graph = facebook.GraphAPI(user["access_token"])
+        facebook_profile = graph.get_object("me")
+        notifications = graph.get_object("me/notifications")
+
+    print "User:%s" % user
+    print "Profile:%s" % facebook_profile
+    print "Notifications:%s" % notifications
+    return "foo"
+
+def getFacebookUser():
+    user = facebook.get_user_from_cookie(request.cookies, app.config['FACEBOOK_APP_ID'], app.config['FACEBOOK_APP_SECRET'])
+    return user
 
 @app.errorhandler(404)
 def page_not_found(error):
