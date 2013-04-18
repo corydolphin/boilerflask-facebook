@@ -21,8 +21,8 @@ class DevelopmentConfig(Config):
     configuration to run the application
     """ 
     SQLALCHEMY_DATABASE_URI = 'something local maybe?'
-    # FACEBOOK_APP_SECRET = "XXX" Example variables which change with environment
-    # FACEBOOK_APP_ID = "XX"
+    FACEBOOK_APP_SECRET = "bccab3c2e2c909a441f624c9ffbd91a5" #Example variables which change with environment
+    FACEBOOK_APP_ID = "503545389707217"
 
 
 class ProductionConfig(DevelopmentConfig):
