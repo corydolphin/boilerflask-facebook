@@ -1,16 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Boiler plated{% endblock %}
 
-{% block js %}
-    {{super()}}
-{% endblock %}
-
 {% block content %}
 <h1>Welcome</h1>
 <p>
     This is a very simple, boilerplated Flask application, configured with some basic structure to make life easy.
 </p>
-    <div class="fb-login-button" autologoutlink="true" scope="manage_notifications"></div>
     <h2> Welcome {{facebook_profile['name'] }} </h2>
 
 <ul>
