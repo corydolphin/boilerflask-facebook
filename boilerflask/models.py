@@ -1,18 +1,19 @@
-from boilerflask import app #db, cache, crypt # use a cache and a crypto library for users!
+from boilerflask import app, db
 import datetime
 import utils
 import re
 
-""" Uncomment for user model
+
 class User(db.Document):
-    email = db.StringField(required=False)
-    username = db.StringField(required=True)
+    facebook_id = db.StringField(required=True)
+    access_token = db.StringField(required=True)
+    name = db.StringField(required=True)
+
     def __str__(self):
         return self.__unicode__()
 
     def __repr__(self):
         return self.__unicode__()
 
-    def __unicode(self):
-        return u'user:{"username":%s, "email":%s}' % (self.username, self.email)
-"""
+    def __unicode__(self):
+        return u'User:{"name":%s, facebook_id":%s, "access_token":%s}' % (self.name, self.facebook_id, self.access_token)

@@ -1,6 +1,12 @@
 Flask==0.9
 Flask-OAuth==0.12
+Flask-WTF==0.8.3
 Jinja2==2.6
+WTForms==1.0.3
 Werkzeug==0.8.3
+flask-mongoengine==0.6
 httplib2==0.8
+mongoengine==0.7.10
 oauth2==1.5.211
+pymongo==2.5
+requests==1.2.0

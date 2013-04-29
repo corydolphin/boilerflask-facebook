@@ -19,6 +19,11 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'something local maybe?'
     FACEBOOK_APP_SECRET = "bccab3c2e2c909a441f624c9ffbd91a5" #Example variables which change with environment
     FACEBOOK_APP_ID = "503545389707217"
+    MONGODB_DB = "testing"
+    MONGODB_USERNAME = ""
+    MONGODB_PASSWORD = ""
+    MONGODB_HOST = "localhost"
+    MONGODB_PORT = "27017"
 
 
 class ProductionConfig(DevelopmentConfig):
@@ -29,7 +34,6 @@ class ProductionConfig(DevelopmentConfig):
     # FACEBOOK_APP_SECRET = "XXX" Example variables which change with environment
     # FACEBOOK_APP_ID = "XX"
     # SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_ROSE_URL")
-
 
 def getConfig():
     ''' Should return the proper configuration based upon environmental 
