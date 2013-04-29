@@ -1,7 +1,3 @@
-#
-# @author Cory Dolphin
-# @wcdolphin
-#
 import os
 
 class Config(object):

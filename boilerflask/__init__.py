@@ -1,14 +1,4 @@
-#
-# @author Cory Dolphin
-# @wcdolphin
-#
-
 from flask import Flask, render_template, request, redirect, url_for, abort
-#from flask.ext.sqlalchemy import SQLAlchemy #uncomment to use a relational database driver
-#from flask.ext.mongoengine import MongoEngine #uncomment to use mongodb with mongoengine as a driver
-#from flask.ext.login import (LoginManager,AnonymousUser) # want to handle login?
-#from flask.ext.bcrypt import Bcrypt #want to hash passwords? (You should!)
-#from flaskext.cache import Cache # want a cache?
 import config #our super sweet configuration module!
 from datetime import datetime
 app = Flask(__name__)
@@ -17,18 +7,22 @@ __cfg = config.getConfig() #Are we running locally, in production? In Testing? T
 app.config.from_object(__cfg) 
 app.configType = __cfg
 
-#db = SQLAlchemy(app) #uncomment for SQL database and ORM
-#db = MongoEngine(app) #uncomment for Mongodb and ODM
 
-#loginManager = LoginManager() #handle login and sessions
-#crypt = Bcrypt(app) #bcrypt for password hashing
-#cache = Cache(app)
+from flask_oauth import OAuth
 
-#loginManager.setup_app(app)
-#loginManager.login_view = "login"
-#loginManager.login_message = u"Please log in to access this page."
-#loginManager.refresh_view = "reauth"
-#loginManager.session_protection = "strong"
+
+oauth = OAuth()
+
+facebook = oauth.remote_app('facebook',
+    base_url='https://graph.facebook.com/',
+    request_token_url=None,
+    access_token_url='/oauth/access_token',
+    authorize_url='https://www.facebook.com/dialog/oauth',
+    consumer_key=app.config['FACEBOOK_APP_ID'],
+    consumer_secret=app.config['FACEBOOK_APP_SECRET'],
+    request_token_params={'scope': 'email,manage_notifications'}
+)
+
 
 print "Initialized with config:%s" % __cfg
 

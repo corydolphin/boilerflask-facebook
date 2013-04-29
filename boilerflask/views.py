@@ -1,22 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-#from boilerflask.models import User
-#from boilerflask.forms import (LoginForm)
-from boilerflask import app #, loginManager, crypt, db, cache
-import utils
-from flask_oauth import OAuth
-
-
-oauth = OAuth()
-
-facebook = oauth.remote_app('facebook',
-    base_url='https://graph.facebook.com/',
-    request_token_url=None,
-    access_token_url='/oauth/access_token',
-    authorize_url='https://www.facebook.com/dialog/oauth',
-    consumer_key=app.config['FACEBOOK_APP_ID'],
-    consumer_secret=app.config['FACEBOOK_APP_SECRET'],
-    request_token_params={'scope': 'email'}
-)
+from boilerflask import app, facebook
+from facebook_helper import *
 
 @app.route('/', methods=['GET'] )
 def index():
@@ -57,43 +41,4 @@ def notifier():
 
     return '%s' % notifications
 
-@app.route('/login')
-def login():
-    return facebook.authorize(callback=url_for('facebook_authorized',
-        next=request.args.get('next') or request.referrer or None,
-        _external=True))
-
-
-@app.route('/login/authorized')
-@facebook.authorized_handler
-def facebook_authorized(resp): #you can/should do registration here
-    if resp is None:
-        return 'Access denied: reason=%s error=%s' % (
-            request.args['error_reason'],
-            request.args['error_description']
-        )
-    session['oauth_token'] = (resp['access_token'], '')
-
-    return redirect(url_for('index')) # redirect to home/index page
-
-
-@facebook.tokengetter
-def get_facebook_oauth_token():
-    return session.get('oauth_token')
-
-
-
-@app.errorhandler(404)
-def page_not_found(error):
-    return 'Cory should really handle this page_not_found'
-
-
-@app.errorhandler(403)
-def forbidden(error):
-    return 'Cory should really handle this forbidden'
-
-
-@app.errorhandler(500)
-def internal_server_error(error):
-    return 'Cory should really handle this internal server error'
 
